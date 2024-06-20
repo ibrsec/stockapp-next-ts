@@ -1,23 +1,32 @@
-import { configureStore } from "@reduxjs/toolkit"
-import loginSlice from "../features/loginSlice"
+// import { configureStore } from "@reduxjs/toolkit"
+// import loginSlice from "../features/loginSlice"
 
+// export const store = configureStore({
+//     reducer: {
+//         login:loginSlice,
+//     }
+// })
 
-export const store = configureStore({
+// export type RootState = ReturnType<typeof store.getState>
+// export type AppDispatch = typeof store.dispatch
+
+import { configureStore } from "@reduxjs/toolkit";
+import loginSlice from "../features/loginSlice";
+
+export const makeStore = () => {
+  return configureStore({
     reducer: {
-        login:loginSlice,
-    }
-})
+      login: loginSlice,
+    },
+  });
+};
 
+// Infer the type of makeStore
+export type AppStore = ReturnType<typeof makeStore>;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];
 
-
-// export const makeStore = () => {
-//     return configureStore({
-//         reducer:{
-//             login:loginSlice,
-//         }
-
-//     })
-// }
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+//storeprovider ve provider ile sarmalamada sira suan
+// sonra login islemi iscin apisini yazip uyuglayacam
+// sonra gelen logini taniyip orivate public route lari ayarlayacam

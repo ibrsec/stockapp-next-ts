@@ -7,7 +7,7 @@ interface IState {
     error:boolean;
 }
 const initialState:IState = {
-auth:{currentUser:"",token:""},
+auth:{currentUser:"user123",token:"tokern123"},
 loading:false,
 error:false
 }
@@ -38,5 +38,5 @@ const loginSlice = createSlice({
 
 
 
-export const  {} = loginSlice.actions;
+export const  {fetchAuthStart,fetchAuthFailEnd,fetchAuthSuccessLogin} = loginSlice.actions;
 export default loginSlice.reducer;

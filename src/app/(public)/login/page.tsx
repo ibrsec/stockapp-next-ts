@@ -1,9 +1,13 @@
 "use client";
 
+import { useAppSelector } from "@/lib/hooks/hooks";
+import useAuthApis from "@/lib/hooks/useAuthApis";
 import { Form, Formik, withFormik, FormikProps } from "formik";
 import Link from "next/link";
 import { useEffect } from "react";
 import * as Yup from "yup";
+
+// import useAuthApis from '../../../lib/hooks/useAuthApis';
 /*
   This example requires some changes to your config:
   
@@ -47,8 +51,16 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
 
 
 
-  
+const {loginApi} = useAuthApis();
   useEffect(()=>{},[])
+
+  loginApi();
+
+
+  const authName = useAppSelector((state) => state.login.auth)
+  console.log('authName', authName)
+
+
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
