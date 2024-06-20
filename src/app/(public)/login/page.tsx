@@ -51,14 +51,12 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
 
 
 
-const {loginApi} = useAuthApis();
+  
+  
   useEffect(()=>{},[])
+  
+  
 
-  loginApi();
-
-
-  const authName = useAppSelector((state) => state.login.auth)
-  console.log('authName', authName)
 
 
   return (
@@ -122,7 +120,7 @@ const {loginApi} = useAuthApis();
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type="text"
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  ps-2  mb-10"
@@ -175,7 +173,7 @@ const LoginPage = withFormik<MyFormProps, FormValues>({
     email: Yup.string().required("Email is required").email("Email not valid").max(50,"Max 50 character"),
     password: Yup.string().required("Password is required")
     .matches(
-      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      /^.*(?=.{8,})((?=.*[?!@%#$&]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
       "Password must contain at least 8 characters, one uppercase, one number and one special case character"
     )
     
@@ -187,6 +185,13 @@ const LoginPage = withFormik<MyFormProps, FormValues>({
     { props, setSubmitting, setErrors, resetForm }
   ) {
     console.log(email, password);
+    const {loginApi} = useAuthApis();
+    loginApi(email, password);
+  
+
+
+
+
     resetForm();
     setSubmitting(true);
   },
