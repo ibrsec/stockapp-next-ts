@@ -1,10 +1,18 @@
+"use client";
+import { errorToast, successToast } from "@/helpers/Toastify";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 const useAuthApis = () => {
 
 
-//link to
-//sonuc uyarisi gosterme
 //dispatchler
+useEffect(()=> {
+  console.log('use effect is worked');
+},[])
 
+
+const router = useRouter();
 
 
   const loginApi = async (email: string, password: string) => {
@@ -20,8 +28,14 @@ const useAuthApis = () => {
     try {
       const responseLogin = await fetch(url, options);
       console.log("responseLogin = ", responseLogin);
+      if(!responseLogin.ok){
+        throw new Error(responseLogin?.statusText);
+      }
+      successToast("Logined is successfullly");
+      router.replace("/stock/dashboard");
     } catch (error) {
       console.log('errorLogin = ',error);
+      errorToast("Login is failed!")
     }
   };
   return { loginApi };

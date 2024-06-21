@@ -51,6 +51,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
 
 
 
+
   
   
   useEffect(()=>{},[])
@@ -138,11 +139,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-amber-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                disabled={
-                  isSubmitting ||
-                  !!(errors.email && touched.email) ||
-                  !!(errors.password && touched.password)
-                }
+                disabled={isSubmitting}
               >
                 Sign in
               </button>
@@ -163,7 +160,11 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
   );
 };
 
+
+
+
 const LoginPage = withFormik<MyFormProps, FormValues>({
+  
   mapPropsToValues: (props) => ({
     email: props.initialEmail || "",
     password: props.initialPassword || "",
@@ -185,6 +186,11 @@ const LoginPage = withFormik<MyFormProps, FormValues>({
     { props, setSubmitting, setErrors, resetForm }
   ) {
     console.log(email, password);
+    
+
+
+    // eventin icinde hook cagirdigimiz icin hata verdi
+    // login page in ts alani yok nasil yapacaz burayi.
     const {loginApi} = useAuthApis();
     loginApi(email, password);
   
@@ -193,8 +199,12 @@ const LoginPage = withFormik<MyFormProps, FormValues>({
 
 
     resetForm();
-    setSubmitting(true);
+    setSubmitting(false);
   },
 })(InnerForm);
 
 export default LoginPage;
+
+
+
+// 

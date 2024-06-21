@@ -27,6 +27,6 @@ export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];
 
-//storeprovider ve provider ile sarmalamada sira suan
-// sonra login islemi iscin apisini yazip uyuglayacam
-// sonra gelen logini taniyip orivate public route lari ayarlayacam
+//*ok - storeprovider ve provider ile sarmalamada sira suan
+// sonra login islemi icin apisini yazip uyuglayacam
+// sonra gelen logini taniyip private public route lari ayarlayacam
