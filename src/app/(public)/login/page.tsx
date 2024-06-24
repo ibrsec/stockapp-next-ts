@@ -220,7 +220,7 @@ const LoginPage = () => {
       .max(50, "Max 50 character"),
   });
 
-  const [passwordEye,setPasswordEye] = useState(false);
+  const [passwordEye,setPasswordEye] = useState(true);
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
