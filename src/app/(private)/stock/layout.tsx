@@ -1,13 +1,10 @@
 import React, { ReactNode } from 'react'
-
-import Navbar from '../../../components/Navbar';
+ 
 const layout = ({children}:{children:ReactNode}) => {
   return (
-    <div>
-        <Navbar >
+    <div> 
         {children}
-
-        </Navbar>
+ 
     </div>
   )
 }

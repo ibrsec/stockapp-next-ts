@@ -7,7 +7,7 @@ interface IState {
     error:boolean;
 }
 const initialState:IState = {
-auth:{currentUser:"user123",token:"tokern123"},
+auth:{currentUser:"",token:""},
 loading:false,
 error:false
 }
@@ -30,6 +30,10 @@ const loginSlice = createSlice({
             state.loading = false;
             state.auth = action.payload;
         },
+        fetchAuthLogout : (state) =>{
+            state.loading = false;
+            state.auth = {currentUser:"",token:""};
+        },
 
 
         // action: PayloadAction<Page[]
@@ -38,5 +42,7 @@ const loginSlice = createSlice({
 
 
 
-export const  {fetchAuthStart,fetchAuthFailEnd,fetchAuthSuccessLogin} = loginSlice.actions;
+export const  {fetchAuthStart,fetchAuthFailEnd,fetchAuthSuccessLogin,fetchAuthLogout} = loginSlice.actions;
 export default loginSlice.reducer;
+
+//useri globale alip private routelari ayarliyacaz
