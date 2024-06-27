@@ -86,7 +86,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example({children}:{children:ReactNode}) {
+export default function Navbar({children}:{children:ReactNode}) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   return (
