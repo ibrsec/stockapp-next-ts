@@ -1,7 +1,8 @@
 'use client'
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
-import {   store } from '../lib/store/store'
+import {   persistor, store } from '../lib/store/store'
+import { PersistGate } from 'redux-persist/integration/react';
 
 export default function StoreProvider({
   children,
@@ -14,5 +15,9 @@ export default function StoreProvider({
   //   storeRef.current = makeStore()
   // }
 
-  return <Provider store={store}>{children}</Provider>
+  return <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+    {children}
+    </PersistGate>
+    </Provider>
 }
