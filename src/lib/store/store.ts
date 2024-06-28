@@ -70,3 +70,7 @@ export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+
+//token li bir axios olmayacak
+// fetch kullaniyoruz suan tokeni globalden alip fetche verecez gibi hazir methodmu yapsak herseferinde mi versek.
